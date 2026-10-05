@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aequitas Capital | Social Conviction</title>
+<meta name="description" content="A student investment mandate focused on workers’ rights.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23101e30'/%3E%3Cpath d='M9 30L20 9L31 30M14 23H26' fill='none' stroke='%23c8ad7f' stroke-width='3'/%3E%3C/svg%3E">
+<style>
+:root {
+  --navy:#101e30;
+  --paper:#f5f3ee;
+  --gold:#c8ad7f;
+  --ink:#1b2938;
+  --muted:#68717a;
+  --line:#dadbd6;
+}
+* { box-sizing:border-box }
+body {
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+}
+button,a { -webkit-tap-highlight-color:transparent }
+button { font:inherit; cursor:pointer }
+button:focus-visible,a:focus-visible,summary:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:5px;
+}
+header {
+  padding:26px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  border-bottom:1px solid var(--line);
+}
+.brand { font-family:Georgia,serif; font-size:25px; letter-spacing:2px }
+.brand small {
+  display:block;
+  margin-top:6px;
+  font:9px Arial,sans-serif;
+  letter-spacing:4px;
+}
+nav { display:flex; gap:6px; flex-wrap:wrap }
+nav button {
+  padding:12px 10px;
+  border:0;
+  background:none;
+  color:var(--muted);
+  font-size:12px;
+}
+nav button[aria-current="page"] {
+  color:var(--ink);
+  box-shadow:inset 0 -2px var(--gold);
+}
+main { min-height:calc(100svh - 190px) }
+section { padding:65px 8% 48px; animation:appear .3s ease }
+section[hidden] { display:none }
+.eyebrow {
+  color:var(--muted);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  margin-bottom:24px;
+}
+h1,h2,h3 { font-family:Georgia,serif; font-weight:normal }
+h1,h2 {
+  max-width:950px;
+  font-size:clamp(38px,5.5vw,76px);
+  line-height:1.08;
+  letter-spacing:-2px;
+  margin:0 0 25px;
+}
+h3 { font-size:26px; margin:0 0 14px }
+p { line-height:1.65 }
+.lead { max-width:730px; font-size:19px; color:var(--muted) }
+.hero {
+  background:var(--navy);
+  color:white;
+  min-height:calc(100svh - 190px);
+  position:relative;
+}
+.hero .eyebrow,.hero .lead { color:#bbc4cf }
+.hero h1 { max-width:850px }
+.hero em { color:var(--gold); font-weight:normal }
+.hero .lead { max-width:620px }
+.primary {
+  display:inline-block;
+  margin-top:24px;
+  padding:16px 23px;
+  background:var(--gold);
+  color:var(--navy);
+  border:0;
+}
+.facts {
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid #ffffff30;
+}
+.fact { padding:25px 25px 0 0 }
+.fact strong { display:block; font:27px Georgia,serif }
+.fact span { display:block; margin-top:10px; font-size:12px; color:#bbc4cf }
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  margin-top:45px;
+}
+.item { border-top:1px solid var(--line); padding-top:22px }
+.number { color:#967a4e; font-size:12px; margin-bottom:20px }
+.item p { color:var(--muted); font-size:15px }
+.statement {
+  margin-top:36px;
+  padding:23px 0;
+  border-top:1px solid var(--line);
+  font-size:19px;
+  max-width:950px;
+}
+details { border-bottom:1px solid var(--line); padding:22px 0 }
+summary { cursor:pointer; font:24px Georgia,serif }
+.rule-list { padding-left:20px; line-height:1.75; color:var(--muted) }
+.rule-list li { margin:10px 0 }
+.note { font-size:12px; color:var(--muted); line-height:1.6 }
+.status {
+  display:inline-block;
+  font-size:10px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#77613e;
+  border:1px solid #c8ad7f;
+  padding:8px 11px;
+  margin:8px 0 15px;
+}
+.pending {
+  margin-top:40px;
+  padding:26px 0;
+  border-top:1px solid var(--line);
+  max-width:800px;
+}
+footer {
+  padding:18px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  border-top:1px solid var(--line);
+}
+footer small { font-size:10px; color:var(--muted) }
+.controls { display:flex; align-items:center; gap:12px }
+.controls button {
+  border:1px solid var(--line);
+  background:transparent;
+  padding:10px 13px;
+  color:var(--ink);
+}
+.controls button:disabled { opacity:.3; cursor:default }
+#counter { font-size:11px; min-width:42px; text-align:center }
+#notice { padding:0 5%; font-size:12px; color:var(--muted) }
+@keyframes appear {
+  from { opacity:0; transform:translateY(8px) }
+  to { opacity:1; transform:translateY(0) }
+}
+@media(prefers-reduced-motion:reduce) {
+  section { animation:none }
+}
+@media(max-width:900px) {
+  header { align-items:flex-start; flex-direction:column }
+  nav { gap:0 }
+  nav button { padding:12px 8px }
+  section { padding:40px 6% }
+  .grid { grid-template-columns:1fr; gap:18px }
+  .facts { margin-top:35px }
+  .fact strong { font-size:21px }
+  footer { flex-wrap:wrap }
+  h1,h2 { letter-spacing:-1px }
+}
+@media(max-width:480px) {
+  .facts { grid-template-columns:1fr }
+  .fact { padding-top:18px }
+  .controls { gap:7px }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">AEQUITAS
+    <small>CAPITAL · STUDENT PROJECT</small>
+  </div>
+  <nav aria-label="Presentation chapters">
+    <button data-page="0" aria-current="page">Our Conviction</button>
+    <button data-page="1">Our Method</button>
+    <button data-page="2">Our Standards</button>
+    <button data-page="3">Our Decisions</button>
+    <button data-page="4">Our Portfolio</button>
+    <button data-page="5">Our Engagement</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="conviction" aria-labelledby="title-0">
+    <div class="eyebrow">01 / Our conviction</div>
+    <h1 id="title-0" tabindex="-1">Workers’ rights.<br><em>An investment conviction.</em></h1>
+    <p class="lead">
+      We aim to turn respect for workers into clear investment
+      requirements, portfolio decisions and measurable commitments.
+    </p>
+    <button class="primary" data-page="1">Explore our approach →</button>
+    <div class="facts">
+      <div class="fact">
+        <strong>Workers’ rights</strong>
+        <span>Our core social conviction</span>
+      </div>
+      <div class="fact">
+        <strong>Article 8</strong>
+        <span>Classification stated in our proposed fund policy</span>
+      </div>
+      <div class="fact">
+        <strong>≥ 50% of portfolio weight</strong>
+        <span>In companies with positive social-impact revenue</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" hidden aria-labelledby="title-1">
+    <div class="eyebrow">02 / Our method</div>
+    <h2 id="title-1" tabindex="-1">Every decision needs<br>a clear explanation.</h2>
+    <p class="lead">
+      A company’s eligibility, relative performance and engagement
+      needs answer different questions.
+    </p>
+    <div class="grid">
+      <div class="item">
+        <div class="number">01 / ELIGIBILITY</div>
+        <h3>Can we invest?</h3>
+        <p>Apply our exclusion policy to every company in the investment universe.</p>
+      </div>
+      <div class="item">
+        <div class="number">02 / SELECTION</div>
+        <h3>Why choose this company?</h3>
+        <p>Compare eligible companies using indicators linked to our social conviction.</p>
+      </div>
+      <div class="item">
+        <div class="number">03 / MONITORING</div>
+        <h3>What needs to improve?</h3>
+        <p>Identify gaps, define engagement requests and track evidence of progress.</p>
+      </div>
+    </div>
+    <div class="pending">
+      <span class="status">Analysis in progress</span>
+      <p>Selected indicators, comparison groups and data coverage will be added after validation.</p>
+    </div>
+  </section>
+
+  <section id="standards" hidden aria-labelledby="title-2">
+    <div class="eyebrow">03 / Our standards</div>
+    <h2 id="title-2" tabindex="-1">Our conviction sets<br>our investment boundaries.</h2>
+    <p class="lead">
+      Every holding must pass our exclusion rules. Financial performance
+      cannot justify keeping an ineligible company.
+    </p>
+
+    <details>
+      <summary>01 — Human rights and international standards</summary>
+      <ul class="rule-list">
+        <li>Exclude companies flagged for UNGC / OECD violations.</li>
+        <li>Exclude companies flagged for a lack of UNGC / OECD processes.</li>
+        <li>Screen forced labour, child labour and freedom-of-association risks.</li>
+      </ul>
+      <p class="note">
+        The policy records “4/5” for these risk thresholds.
+        The exact comparison operator still needs confirmation before implementation.
+      </p>
+    </details>
+
+    <details>
+      <summary>02 — Sensitive activities</summary>
+      <ul class="rule-list">
+        <li>Controversial weapons: exclude when the involvement flag is true.</li>
+        <li>Conventional weapons: exclude above 5% of revenue.</li>
+        <li>Tobacco and adult entertainment: exclude above 0% of revenue.</li>
+        <li>Alcohol: exclude above 5% of revenue.</li>
+        <li>PAB exclusion flag: exclude when the flag is true.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>03 — Controversies and data coverage</summary>
+      <ul class="rule-list">
+        <li>Overall controversy score: exclude at 5/5.</li>
+        <li>Workplace fatalities: exclude above 3 deaths over 3 years.</li>
+        <li>Data coverage: exclude below 50% using the group’s dedicated coverage measure.</li>
+        <li>Screen severe HR and union controversies.</li>
+      </ul>
+      <p class="note">
+        HR and union controversy thresholds are recorded as “4/5”;
+        their exact interpretation remains to be confirmed.
+      </p>
+    </details>
+
+    <p class="statement">
+      At least 50% of portfolio weight must be invested in companies
+      with positive revenue from the social-impact categories defined in our policy.
+    </p>
+    <p class="note">
+      This is a portfolio-weight requirement, not a requirement for
+      50% of each company’s revenue. These are our proposed fund rules.
+      Source: the group’s exclusion policy.
+    </p>
+  </section>
+
+  <section id="decisions" hidden aria-labelledby="title-3">
+    <div class="eyebrow">04 / Our decisions</div>
+    <h2 id="title-3" tabindex="-1">From a rule<br>to a portfolio decision.</h2>
+    <p class="lead">
+      We will explain what changed, which evidence mattered
+      and why each decision follows our mandate.
+    </p>
+    <div class="grid">
+      <div class="item">
+        <div class="number">CASE 01</div>
+        <h3>A position to exit</h3>
+        <p>The exclusion trigger, supporting evidence and change in portfolio weight.</p>
+      </div>
+      <div class="item">
+        <div class="number">CASE 02</div>
+        <h3>A position to strengthen</h3>
+        <p>The social indicators supporting the decision and the allocation rationale.</p>
+      </div>
+      <div class="item">
+        <div class="number">CASE 03</div>
+        <h3>A case requiring more evidence</h3>
+        <p>The unresolved question, missing information and next action.</p>
+      </div>
+    </div>
+    <div class="pending">
+      <span class="status">Analysis in progress</span>
+      <p>
+        Company names and decisions are pending validation.
+        The three test companies will also be compared against
+        the expectations recorded before calculation.
+      </p>
+    </div>
+  </section>
+
+  <section id="portfolio" hidden aria-labelledby="title-4">
+    <div class="eyebrow">05 / Our portfolio</div>
+    <h2 id="title-4" tabindex="-1">Our allocation must<br>reflect our conviction.</h2>
+    <p class="lead">
+      The final portfolio will show how exclusions, selection
+      and reallocation translate into investment weights.
+    </p>
+    <div class="grid">
+      <div class="item">
+        <h3>Allocation</h3>
+        <p>Final holdings, position weights and sector concentration.</p>
+      </div>
+      <div class="item">
+        <h3>Changes</h3>
+        <p>Initial and final weights, with an explanation for each major adjustment.</p>
+      </div>
+      <div class="item">
+        <h3>Social characteristics</h3>
+        <p>Portfolio indicators presented alongside their data coverage and limitations.</p>
+      </div>
+    </div>
+    <div class="pending">
+      <span class="status">Analysis in progress</span>
+      <p>Portfolio results will appear here once the calculations have been validated.</p>
+    </div>
+  </section>
+
+  <section id="engagement" hidden aria-labelledby="title-5">
+    <div class="eyebrow">06 / Our engagement</div>
+    <h2 id="title-5" tabindex="-1">Clear demands.<br>Accountable follow-up.</h2>
+    <p class="lead">
+      Engagement needs a specific request, evidence of progress
+      and a deadline. It cannot override a mandatory exclusion.
+    </p>
+    <div class="grid">
+      <div class="item">
+        <div class="number">MONITOR</div>
+        <h3>Review systematically</h3>
+        <p>
+          Review the investment universe every six months.
+          An overall controversy score of 5 triggers an immediate review.
+        </p>
+      </div>
+      <div class="item">
+        <div class="number">ACT</div>
+        <h3>Enforce our rules</h3>
+        <p>
+          Excluded holdings receive a zero final weight.
+          The policy sets a maximum of 30 business days to sell
+          following a new normative or sectoral breach during holding.
+        </p>
+      </div>
+      <div class="item">
+        <div class="number">DOCUMENT</div>
+        <h3>Explain the decision</h3>
+        <p>
+          The ESG analyst applies the rules. The portfolio manager
+          signs off the exclusion list and records the impact of trades.
+        </p>
+      </div>
+    </div>
+    <p class="statement">
+      Our case for the mandate: explicit rules, traceable decisions
+      and a commitment to report what the data can—and cannot—show.
+    </p>
+    <p class="note">
+      Company-specific engagement targets, deadlines and methodological
+      limitations will be added as the group completes its analysis.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <small>AEQUITAS CAPITAL · ACADEMIC CASE · 2026<br>
+    Student project. Not affiliated with Aequitas Capital Partners.</small>
+  <div class="controls">
+    <button id="fullscreen" aria-label="Toggle full screen">Full screen</button>
+    <button id="previous" aria-label="Previous chapter">←</button>
+    <span id="counter" aria-live="polite">01 / 06</span>
+    <button id="next" aria-label="Next chapter">→</button>
+  </div>
+</footer>
+<p id="notice" role="status"></p>
+
+<script>
+const pages = [...document.querySelectorAll("main section")];
+const navButtons = [...document.querySelectorAll("nav button")];
+const previous = document.getElementById("previous");
+const next = document.getElementById("next");
+const fullscreen = document.getElementById("fullscreen");
+let current = 0;
+
+function showPage(index, focus = true) {
+  current = Math.max(0, Math.min(index, pages.length - 1));
+  pages.forEach((page, i) => { page.hidden = i !== current; });
+  navButtons.forEach((button, i) => {
+    if (i === current) button.setAttribute("aria-current", "page");
+    else button.removeAttribute("aria-current");
+  });
+  document.getElementById("counter").textContent =
+    `${String(current + 1).padStart(2, "0")} / 06`;
+  previous.disabled = current === 0;
+  next.disabled = current === pages.length - 1;
+  if (focus) {
+    document.getElementById(`title-${current}`).focus({preventScroll:true});
+    window.scrollTo({top:0, behavior:"instant"});
+  }
+}
+document.querySelectorAll("[data-page]").forEach(button => {
+  button.addEventListener("click", () => showPage(Number(button.dataset.page)));
+});
+previous.addEventListener("click", () => showPage(current - 1));
+next.addEventListener("click", () => showPage(current + 1));
+document.addEventListener("keydown", event => {
+  if (event.altKey || event.ctrlKey || event.metaKey ||
+      event.target.matches("input, textarea, select, [contenteditable]")) return;
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    showPage(current + 1);
+  }
+  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    showPage(current - 1);
+  }
+});
+fullscreen.addEventListener("click", async () => {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else if (document.documentElement.requestFullscreen)
+      await document.documentElement.requestFullscreen();
+    else throw new Error("Unavailable");
+  } catch {
+    document.getElementById("notice").textContent =
+      "Use your browser’s full-screen command to expand the presentation.";
+  }
+});
+document.addEventListener("fullscreenchange", () => {
+  fullscreen.textContent = document.fullscreenElement ? "Exit full screen" : "Full screen";
+});
+showPage(0, false);
+</script>
+</body>
+</html>
